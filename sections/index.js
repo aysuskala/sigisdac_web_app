@@ -1,0 +1,7 @@
+export { default as Hero } from './Hero'
+export { default as WhoWeAre } from './WhoWeAre'
+export { default as Essence } from './Essence'
+export { default as Services } from './Services'
+export { default as FeaturedNews } from './FeaturedNews'
+export { default as Banner } from './Banner'
+export { default as Contact } from './Contact'
