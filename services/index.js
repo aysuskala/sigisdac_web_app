@@ -40,7 +40,7 @@ export const getPosts = async () => {
 export const getPostDetails = async (slug) => {
     const query = gql`
     query GetPostDetails($slug: String!) {
-      post(where: { slug: $slug }) {
+      post(where: { slug: $slug } orderBy:datePublished_DESC) {
           author {
             bio
             id
@@ -105,6 +105,7 @@ export const getSimilarPosts = async (categories, slug) => {
     query GetPostDetails($slug: String!, $categories: [String!]) {
       posts ( 
         where: { slug_not: $slug, AND: { categories_some: { slug_in: $categories }}}
+        orderBy: datePublished_DESC
         last: 3
       ) {
         title
@@ -139,7 +140,7 @@ export const getCategories = async () => {
 export const getCategoryPost = async (slug) => {
   const query = gql`
     query GetCategoryPost($slug: String!) {
-      postsConnection(where: {categories_some: {slug: $slug}}) {
+      postsConnection(where: {categories_some: {slug: $slug}} orderBy:datePublished_DESC) {
         edges {
           cursor
           node {
